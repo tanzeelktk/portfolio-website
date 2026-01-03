@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+html{
+  scroll-behavior: smooth;
+}
+
+.nav-links {
+  @apply text-[16px] text-[#102D47] hover:text-blue-500 dark:text-white hover:cursor-pointer;
+}
+
+.project-card {
+  @apply flex flex-col justify-center items-center py-6 bg-white dark:bg-[#112145] rounded-xl;
+}
+
+.active-price-btn {
+  @apply text-blue-500 text-xl font-semibold bg-white dark:bg-slate-900 py-4 px-15 rounded-sm shadow-sm hover:cursor-pointer transition-all duration-300;
+}
+
+.price-btn {
+  @apply py-4 px-15 text-xl font-semibold hover:cursor-pointer transition-all duration-300;
+}
+
+.social-btn{
+  @apply w-10 h-10 bg-gray-300 dark:bg-blue-950 flex items-center justify-center rounded-sm hover:cursor-pointer hover:rotate-10 transition-all duration-300 
+}
