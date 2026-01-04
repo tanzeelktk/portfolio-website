@@ -1,47 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import { SwiperSlide, Swiper } from 'swiper/react';
+import { Autoplay, Pagination } from "swiper/modules";
 function HeroSection(props) {
-    const [fade, setFade] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0);
+
     const bannerImages = [
         '/images/banner/blogforgeCover.webp',
         '/images/banner/gleamerCover.webp',
         '/images/banner/learnaxisCover.webp',
         '/images/banner/studiovaCover.webp'
     ];
-    const intervalRef = useRef()
-
-    function startSlider() {
-        intervalRef.current = setInterval(() => {
-            setFade(false);
-            setTimeout(() => {
-                setCurrentIndex(prev =>
-                    (prev + 1) % bannerImages.length
-                )
-                setFade(true)
-            }, 500);
-        }, 3000)
-    }
-
-    function stopSlider() {
-        clearInterval(intervalRef.current)
-    }
-
-    const goToSlide = (index) => {
-        stopSlider();
-        setFade(false);
-
-        setTimeout(() => {
-            setCurrentIndex(index);
-            setFade(true);
-            startSlider();
-        }, 300);
-    };
-
-    useEffect(() => {
-        startSlider();
-        return () => stopSlider()
-    }, [])
-
 
 
     return (
@@ -58,32 +25,36 @@ function HeroSection(props) {
                 </div>
 
             </div>
-            <div className='flex flex-col items-center justify-center relative gap-4 hover:cursor-pointer'>
-                <div className=" flex w-[80%] h-[80%] rounded-xl overflow-hidden"
-                    onMouseEnter={stopSlider}
-                    onMouseLeave={startSlider}>
-                    {/* Current Image */}
-                    <img
-                        src={bannerImages[currentIndex]}
-                        className={`w-full h-full object-cover
-                        transition-opacity duration-500
-                        ${fade ? "opacity-100" : "opacity-0"}`}
-                        alt=""
-                    />
+            <div className="flex flex-col items-center justify-center relative gap-4">
+                <div className="w-[320px] h-[220px] md:w-[420px] md:h-[280px] rounded-xl overflow-hidden">
 
-                </div>
-                <div className=" bottom-4 flex items-center justify-center gap-2">
-                    {bannerImages.map((_, index) => (
-                        <button 
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 hover:cursor-pointer
-                            ${currentIndex === index
-                                    ? 'bg-blue-500 scale-125 dark:bg-blue-400'
-                                    : 'bg-blue-900 hover:bg-blue-700 dark:bg-white'
-                                }`}
-                        />
-                    ))}
+                    <Swiper
+                        className="w-full h-full"
+                        modules={[Autoplay, Pagination]}
+                        slidesPerView={1}
+                        loop={true}
+                        speed={700}
+                        autoplay={{
+                            delay: 3000,
+                            pauseOnMouseEnter: true,
+                        }}
+                        pagination={{ clickable: true }}
+                    >
+                        {
+                            bannerImages.map((img, index) => {
+                                return (
+                                    <SwiperSlide className="w-full h-full" key={index}>
+                                        <div className="w-full h-full">
+                                             <img
+                                            src={img}
+                                            className="w-full h-full object-cover"
+                                            alt=""
+                                        />
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })}
+                    </Swiper>
                 </div>
             </div>
         </div>

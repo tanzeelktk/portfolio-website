@@ -24,8 +24,8 @@ function NavBar({ menuOpen, setMenuOpen, theme, setTheme, isScrolled, setIsScrol
                     ? "top-0 left-0 z-50 bg-white dark:bg-blue-950 shadow-lg py-4"
                     : "bg-transparent py-6"
                 }`}>
-                <div className="w-[20%] text-[#102D47] dark:text-white"><h2>WebCraftStudio</h2></div>
-                <div className="w-[30%]  justify-between hidden 2xl:flex">
+                <div className="w-[15%] text-[#102D47] dark:text-white"><h2 className='text-2xl font-bold'>WebCraftStudio</h2></div>
+                <div className="w-[40%]  hidden 2xl:flex justify-between">
                     <a className='nav-links' href="#">Home</a>
                     <a className='nav-links' href="#projects">Projects</a>
                     <a className='nav-links' href="#expertise">Our Services</a>

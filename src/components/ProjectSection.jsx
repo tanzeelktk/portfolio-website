@@ -92,7 +92,7 @@ const ProjectSection = () => {
                     >
                         {projectImages.map((img, index) => {
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide className="mb-10">
                                     <div className='project-card' key={index}>
                                         <img className="rounded-xl" src={`/images/projects/${img}`} alt="" />
                                         <p className='text-xl mt-4'>Logo</p>
@@ -162,14 +162,14 @@ const ProjectSection = () => {
                         >
                             {reviewsData.map((obj, index) => {
                                 return (
-                                    <SwiperSlide>
+                                    <SwiperSlide className="mb-10">
                                         <div className="" key={index}>
                                             <div className="flex gap-5">
                                                 <div className="w-12 h-12 rounded-full overflow-hidden">
                                                     <img className="" src={`/images/reviews/${obj.image}`} alt="" />
                                                 </div>
                                                 <div>
-                                                    <p className='text-[16px] font-semibold mt-2'>{obj.name}</p>
+                                                    <p className='text-[16px] font-semibold text-left mt-2'>{obj.name}</p>
                                                     <div>
                                                         {
                                                             <Rating rating={obj.rating}/>
